@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import alienBugImage from "../../assets/images/alien-bug.svg";
+import ratImage from "../../assets/images/rat.svg";
 
 const GRID_SIZE = 100;
 
@@ -43,7 +44,7 @@ const Enemy = ({ icon }) => {
   return (
     <div>
       <EnemyBorder>
-        <img src={alienBugImage} />
+        <img src={ratImage} />
       </EnemyBorder>
       <Stats hp={{ max: 10, current: 10 }} name="Enemy Name" />
     </div>
