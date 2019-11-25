@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import pointySwordImage from "../../assets/images/pointy-sword.svg";
+import checkedShieldImage from "../../assets/images/checked-shield.svg";
 
 const Bar = styled.div`
   display: grid;
@@ -19,25 +20,35 @@ const SkillBorder = styled.div`
   }
 `;
 
-const Skill = ({ icon }) => {
+const SkillList = {
+  sword: {
+    icon: pointySwordImage
+  },
+  block: {
+    icon: checkedShieldImage
+  }
+};
+
+const Skill = ({ skillKey }) => {
   return (
     <SkillBorder>
-      <img src={pointySwordImage} />
+      {SkillList[skillKey] && <img src={SkillList[skillKey].icon} />}
     </SkillBorder>
   );
 };
 
+const defaultSkills = Array(8).fill("");
+defaultSkills[0] = "sword";
+defaultSkills[1] = "block";
+
 const SkillBar = () => {
+  const [skills, setSkills] = useState(defaultSkills);
+
   return (
     <Bar>
-      <Skill />
-      <Skill />
-      <Skill />
-      <Skill />
-      <Skill />
-      <Skill />
-      <Skill />
-      <Skill />
+      {skills.map((skill, index) => (
+        <Skill key={index} skillKey={skill} />
+      ))}
     </Bar>
   );
 };
