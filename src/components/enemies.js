@@ -22,11 +22,31 @@ const EnemyBorder = styled.div`
   }
 `;
 
+const StatsBorder = styled.div`
+  p {
+    margin: 0;
+  }
+`;
+
+const Stats = ({ hp, name }) => {
+  return (
+    <StatsBorder>
+      <p>{name}</p>
+      <p>
+        {hp.current}/{hp.max}
+      </p>
+    </StatsBorder>
+  );
+};
+
 const Enemy = ({ icon }) => {
   return (
-    <EnemyBorder>
-      <img src={alienBugImage} />
-    </EnemyBorder>
+    <div>
+      <EnemyBorder>
+        <img src={alienBugImage} />
+      </EnemyBorder>
+      <Stats hp={{ max: 10, current: 10 }} name="Enemy Name" />
+    </div>
   );
 };
 
