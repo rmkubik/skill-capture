@@ -14,6 +14,7 @@ const SkillBorder = styled.div`
   height: 50px;
   border: 1px solid black;
   border-radius: 4px;
+  background-color: ${props => (props.selected ? "cornflowerblue" : "white")};
 
   &:hover {
     background-color: lightblue;
@@ -29,9 +30,9 @@ const SkillList = {
   }
 };
 
-const Skill = ({ skillKey }) => {
+const Skill = ({ skillKey, selected, setSelected }) => {
   return (
-    <SkillBorder>
+    <SkillBorder selected={selected} onClick={setSelected}>
       {SkillList[skillKey] && <img src={SkillList[skillKey].icon} />}
     </SkillBorder>
   );
@@ -43,11 +44,17 @@ defaultSkills[1] = "block";
 
 const SkillBar = () => {
   const [skills, setSkills] = useState(defaultSkills);
+  const [selected, setSelected] = useState(null);
 
   return (
     <Bar>
       {skills.map((skill, index) => (
-        <Skill key={index} skillKey={skill} />
+        <Skill
+          key={index}
+          skillKey={skill}
+          selected={selected === index}
+          setSelected={() => setSelected(index)}
+        />
       ))}
     </Bar>
   );
