@@ -5,8 +5,8 @@ const Stats = () => {
   return (
     <div>
       <p>My Name</p>
-      <p>Health: 10/10</p>
-      <p>Energy: 10/10</p>
+      <p>Health: 10/10 +1</p>
+      <p>Energy: 10/10 +1</p>
     </div>
   );
 };
